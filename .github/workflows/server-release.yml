@@ -33,6 +33,11 @@ jobs:
             echo "version=dev-$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Download Go modules
+        shell: bash
+        run: |
+          go mod download
+
       - name: Build server binary
         env:
           GOOS: linux
